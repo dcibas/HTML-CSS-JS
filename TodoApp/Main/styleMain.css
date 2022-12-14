@@ -1,0 +1,48 @@
+* {
+  border: 0px solid transparent;
+  position: relative;
+}
+
+body{
+  /* margin: 90px 100px 100px 500px; */
+  margin: 90px 100px 100px 410px;
+  background-color: white;
+}
+
+.form {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 0.8rem;
+  margin: 4rem;
+  padding: 5rem;
+  width: 220px;
+  height: max-content;
+  background-color: white;
+}
+
+.regBtn, .logBtn{
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  margin-left: 0.7rem;
+  border-radius: 8px;
+  width: 200px;
+  height: 60px;
+  border: 1px solid white;
+  background-color: #0D6EFD;
+  color: white;
+  cursor: pointer;
+}
+
+h1{
+  margin-bottom: 3rem;
+  margin-left: 1.5rem;
+}
+
+/* @media only screen and (max-width: 1400px) and (min-width: 100px) {
+
+  #form {
+    width: fit-content;
+    max-width: 220px;
+    margin-right: 500px;
+  }
+} */

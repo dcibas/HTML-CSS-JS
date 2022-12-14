@@ -1,0 +1,94 @@
+*{
+  border: 0px solid transparent;
+  align-content: center;
+}
+
+body{
+  /* margin: 40px 100px 100px 118px; */
+  margin: 40px 100px 100px 0px;
+  background-color: white;
+}
+
+#container, #list{
+  display: none;
+  border: 1px solid black;
+  border-radius: 0.8rem;
+  margin: 4rem;
+  padding: 5rem;
+  width: 1000px;
+  min-width: 185px;
+  height: max-content;
+  background-color: white;
+}
+
+.form{
+  display: inline-block;
+  border: 1px solid black;
+  margin: 4rem;
+  padding: 5rem;
+  width: 1000px;
+  min-width: 175px;
+  height: max-content;
+  background-color: white;
+  border-radius: 0.8rem;
+}
+
+.addBtn, .closeBtn, .logoutBtn, .editBtn, .submitBtn, .deleteBtn, .reloadBtn{
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  width: 80px;
+  height: 30px;
+  border: 1px solid white;
+  background-color: #0D6EFD;
+  color: white;
+  cursor: pointer;
+}
+
+.logoutBtn{
+  float: right;
+}
+
+#content{
+  display: inline-block;
+  width: 265px;
+  height: 26px;
+  margin-right: 1rem;
+  border: 1px solid rgb(152, 151, 151);
+  border-radius: 4px;
+}
+
+#type, #date{
+  display: inline-block;
+  height: 26px;
+  margin-right: 1rem;
+  border: 1px solid rgb(152, 151, 151);
+  border-radius: 4px;
+}
+
+#id, #usrid{
+  display: inline-block;
+  height: 26px;
+  width: 50px;
+  margin-right: 1rem;
+  border: 1px solid rgb(152, 151, 151);
+  border-radius: 4px;
+}
+
+p{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.para1, .para2, .para3, .para4{
+  display: inline-block;
+  margin-right: 0.6rem;
+}
+
+/* @media only screen and (max-width: 1400px) and (min-width: 300px) {
+
+  #form,
+  #container, #list, #content{
+    width:100%;
+  }
+} */

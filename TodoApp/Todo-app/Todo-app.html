@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="scriptTodo.js" defer></script>
+    <link rel="stylesheet" href="styleTodo.css" />
+    <title>TodoApp</title>
+  </head>
+  <body>
+    <form class="form" id="form">
+      <h1 id="header">Registered user:</h1>
+      <button class="addBtn" id="add">Add</button>
+      <button class="closeBtn" id="close">Close</button>
+      <button class="logoutBtn" id="logout">Log out</button>
+    </form>
+    <form class="input" id="container">
+      <h1>Input:</h1>
+      <p class="para1">Type of Todo:</p>
+      <input type="text" id="type" value="Type" />
+      <p class="para2">Content of Todo:</p>
+      <input type="text" id="content" value="Content" />
+      <p class="para3">Todo deadline:</p>
+      <input type="date" id="date" />
+      <p class="para4">Todo id:</p>
+      <input type="number" id="id" value="1" min="1" />
+      <p class="para4">User id:</p>
+      <input type="number" id="usrid" value="1" min="1" />
+
+      <br />
+      <button class="editBtn" id="edt">Edit</button>
+      <button class="submitBtn" id="sub">Submit</button>
+      <button class="deleteBtn" id="del">Delete</button>
+      <button class="reloadBtn" id="rel">Reload</button>
+    </form>
+    <div id="list">
+      <h1 id="listHead">Todo list:</h1>
+      <p id="listpara"></p>
+    </div>
+  </body>
+</html>
