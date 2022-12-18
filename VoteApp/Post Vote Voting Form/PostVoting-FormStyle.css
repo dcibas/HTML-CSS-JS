@@ -5,17 +5,24 @@ h1 {
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
     font-size: 50px;
+    margin-left: 67px;
+    text-align: left;
     color: white;
 }
 
 .form-container {
     margin: 30% auto;
     display: block;
-    width:300px;
+    width:600px;
+    height: 680px;
     text-align:center;
     border: 1px solid black;
     border-radius: 10px;
     background-color: rgb(81, 255, 0);
+    padding-top: 2rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow: hidden;
   }
   
   body {
@@ -26,15 +33,32 @@ h1 {
   }
   
   .form-container input {
-    margin-bottom:20px;
+    margin-bottom:10px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;
     height: 25px;
+    width: 77%;
     border-radius: 4px;
+    border: 1px solid black;
+    margin-right: 55px;
+    margin-left: 67px;
+    float: left;
+  }
+
+  #votingdescription {
+    margin-bottom:20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    height: 70%;
+    border-radius: 4px;
+    border: 1px solid black;
+    width: 77%;
+    max-width: 77%;
   }
 
   button {
-    margin-top: 30px;
+    margin-top: 65px;
+    margin-bottom: 80px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     margin-bottom: 80px;
@@ -43,5 +67,11 @@ h1 {
     color: black;
     height: 25px;
     width: 80px;
+    margin-right: 5px;
     border-radius: 4px;
+    float: right;
+  }
+
+  .logout {
+    margin-right: 4rem;
   }
