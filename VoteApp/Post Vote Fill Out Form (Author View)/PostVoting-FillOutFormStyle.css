@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
-h1 { 
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+  h1 {
     font-family: 'Pacifico', cursive;
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
@@ -8,23 +8,9 @@ h1 {
     margin-left: 67px;
     text-align: left;
     color: white;
-}
+  }
 
-h2 {
-    text-align: left;
-    color: black;
-    font-family: 'Josefin Sans', sans-serif;
-    margin-left: 67px;
-}
-
-.votingenddate {
-    text-align: left;
-    color: black;
-    font-family: 'Josefin Sans', sans-serif;
-    margin-left: 67px;
-}
-
-.form-container {
+  .form-container {
     margin: 30% auto;
     display: block;
     width:600px;
@@ -59,15 +45,15 @@ h2 {
     float: left;
   }
 
-  .votingdescription {
-    width: 77%;
-    font-size: 15px;
+  #votingdescription {
+    margin-bottom:20px;
     font-family: 'Josefin Sans', sans-serif;
-    color: black;
-    margin-left: 67px;
-    margin-top: 2px;
-    margin-bottom: 20px;
-    text-align: left;
+    font-size: 15px;
+    height: 70%;
+    border-radius: 4px;
+    border: 1px solid black;
+    width: 77%;
+    max-width: 77%;
   }
 
   button {
@@ -87,5 +73,5 @@ h2 {
   }
 
   .logout {
-    margin-right: 4.6rem;
+    margin-right: 4rem;
   }
