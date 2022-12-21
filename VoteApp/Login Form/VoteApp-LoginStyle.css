@@ -11,7 +11,7 @@
   .form-container {
     margin: 30% auto;
     display: block;
-    width:300px;
+    width:320px;
     text-align:center;
     border: 1px solid black;
     border-radius: 10px;
@@ -34,6 +34,10 @@
     border: 1px solid black;
   }
 
+  #email {
+    margin-left: 10px;
+  }
+
   button {
     margin-top: 30px;
     font-family: 'Josefin Sans', sans-serif;
@@ -45,4 +49,20 @@
     height: 25px;
     width: 80px;
     border-radius: 4px;
+  }
+
+  button:hover {
+    background-color:rgb(242, 255, 0);
+    cursor: pointer;
+    transition: 0.4s; 
+  }
+
+  #Login {
+    margin-left: 10px;
+  }
+
+  i {
+    margin-left: -30px;
+    color: black;
+    cursor: pointer;
   }

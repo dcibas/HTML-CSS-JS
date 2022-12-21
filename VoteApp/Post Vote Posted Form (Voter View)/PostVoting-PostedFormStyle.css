@@ -53,6 +53,7 @@
     height: 25px;
     width: 77%;
     border-radius: 4px;
+    background-color: white;
     border: 1px solid black;
     margin-right: 55px;
     margin-left: 67px;
@@ -84,6 +85,36 @@
     margin-right: 5px;
     border-radius: 4px;
     float: right;
+  }
+
+  button:hover {
+    background-color:rgb(242, 255, 0);
+    cursor: pointer;
+    transition: 0.4s; 
+  }
+
+  .Votingchoice1:hover {
+    background-color:rgb(242, 255, 0);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  .Votingchoice2:hover {
+    background-color:rgb(242, 255, 0);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  .Votingchoice3:hover {
+    background-color:rgb(242, 255, 0);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  .Votingchoice4:hover {
+    background-color:rgb(242, 255, 0);
+    cursor: pointer;
+    transition: 0.4s;
   }
 
   .logout {
