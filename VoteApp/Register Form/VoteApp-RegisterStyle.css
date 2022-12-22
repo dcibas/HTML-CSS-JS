@@ -34,7 +34,7 @@
     border: 1px solid black;
   }
 
-  #address, #age, #email {
+  #address, #age, #email, #name, #surname {
     margin-left: 10px;
   }
 

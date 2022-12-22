@@ -34,6 +34,8 @@ btn2.addEventListener("click", (e) => savedata(e));
 
 function savedata(e) {
   e.preventDefault();
+  let myname = document.getElementById("name").value;
+  let mysurname = document.getElementById("surname").value;
   let mypassword = document.getElementById("password").value;
   let myrepeatedpassword = document.getElementById("repeatpassword").value
   let myemail = document.getElementById("email").value;
@@ -41,6 +43,10 @@ function savedata(e) {
   let myage = document.getElementById("age").value
 
   if (
+    myname != null &&
+    mysurname != null &&
+    myname.length > 0 &&
+    mysurname.length > 0 &&
     mypassword != null &&
     myrepeatedpassword != null &&
     myemail != null &&
@@ -59,12 +65,14 @@ function savedata(e) {
     myage != "" &&
     myage >= 18
   ) {
-          fetch("http://localhost:8090/api/auth/signup", {
+          fetch("http://localhost:8090/api/auth/signups", {
             method: "POST",
             headers: {
               "Content-type": "application/json",
             },
             body: JSON.stringify({
+              name: myname,
+              surname: mysurname,
               password: mypassword,
               repeatPassword: myrepeatedpassword,
               email: myemail,
@@ -77,7 +85,7 @@ function savedata(e) {
             .then(
               localStorage.setItem(
                 "user",
-                JSON.stringify({ mypassword, myemail, myrepeatedpassword, myaddress, age })
+                JSON.stringify({ myname, mysurname, mypassword, myemail, myrepeatedpassword, myaddress, myage })
               )
             )
             .then(alert("You have successfully registered!"))
@@ -87,7 +95,5 @@ function savedata(e) {
             ); 
         } else {
           alert("Please enter full info and try again!");
-        //   document.getElementById("error").textContent =
-        //     "Please enter full info and try again!";
         }
       }

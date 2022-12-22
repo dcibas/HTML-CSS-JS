@@ -27,7 +27,7 @@ function login(e) {
   let myemail = document.getElementById("email").value;
   let mypassword = document.getElementById("password").value;
   let token = "";
-  fetch("http://localhost:8090/api/auth/login",
+  fetch("http://localhost:8090/api/auth/logins",
   {
       method: "POST",
       headers: {
@@ -53,8 +53,6 @@ function login(e) {
         else
         {
         alert("Invalid email or password. Please try again!");
-        // document.getElementById("error").textContent =
-        //   "Invalid email or password. Please try again!";
       }
     
     });

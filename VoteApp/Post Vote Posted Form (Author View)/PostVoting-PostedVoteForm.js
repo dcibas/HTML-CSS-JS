@@ -66,3 +66,38 @@ document.getElementById("votingchoice3").style.background = 'white';
 document.getElementById("votingchoice2").style.background = 'white';
 document.getElementById("votingchoice1").style.background = 'white';
 }
+
+let voteBtn = document.getElementById("vote");
+voteBtn.addEventListener("click", vote);
+
+function vote(e) {
+  e.preventDefault();
+  let myVotinchoice = document.querySelector('input');
+  // let myVotinchoice = document.getElementsByName("votingchoice").value;
+  // let myVotinchoice = document.querySelectorAll('input[type=button]');
+  // if (document.getElementById("votingchoice4").clicked == true){
+  //   var myVotinchoice = document.getElementById("votingchoice4").value;
+  // } else if (document.getElementById("votingchoice3").clicked == true) {
+  //   var myVotinchoice = document.getElementById("votingchoice3").value
+  // } else if (document.getElementById("votingchoice2").clicked == true) {
+  //   var myVotinchoice = document.getElementById("votingchoice2").value
+  // } else {
+  //   var myVotinchoice = document.getElementById("votingchoice1").value
+  // }
+ 
+  fetch(`http://localhost:8090/api/votepost/vote`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ` + localStorage.getItem("token")
+    },
+    body: JSON.stringify({
+      votingChoice: myVotinchoice,
+      votePostId: localStorage.getItem("votepostid"),
+      userId: localStorage.getItem("userid"),
+    }),
+  })
+    .then((res) => res.json())
+    .then(alert("Congratulations! You have successfully submited your vote!"));
+    // .then(location.reload());
+}

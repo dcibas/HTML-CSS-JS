@@ -10,6 +10,13 @@
     color: white;
   }
 
+  p {
+    text-align: left;
+    color: black;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-left: 67px;
+  }
+
   .form-container {
     margin: 30% auto;
     display: block;
@@ -49,7 +56,8 @@
     margin-bottom:20px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;
-    height: 70%;
+    /* height: 250px; */
+    height: 190px;
     border-radius: 4px;
     border: 1px solid black;
     width: 77%;
