@@ -10,7 +10,7 @@
     color: white;
   }
 
-  h2 {
+  h2, .votingCh {
     text-align: left;
     color: black;
     font-family: 'Josefin Sans', sans-serif;
@@ -46,7 +46,7 @@
     color: white;
   }
   
-  .form-container input {
+  .form-container input, select {
     margin-bottom:10px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;
@@ -93,7 +93,7 @@
     transition: 0.4s; 
   }
 
-  .Votingchoice1:hover {
+  /* .Votingchoice1:hover {
     background-color:rgb(242, 255, 0);
     cursor: pointer;
     transition: 0.4s;
@@ -115,7 +115,7 @@
     background-color:rgb(242, 255, 0);
     cursor: pointer;
     transition: 0.4s;
-  }
+  } */
 
   .logout {
     margin-right: 4.6rem;
