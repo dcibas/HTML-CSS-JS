@@ -1,3 +1,16 @@
+let votepost = window.localStorage.getItem("votepost");
+let votepostObj = JSON.parse(votepost);
+let votepostTitle = JSON.parse(votepost).myTitle;
+let votepostDescription = JSON.parse(votepost).myDescription;
+let votepostEndDate = JSON.parse(votepost).myEnddate;
+
+document.getElementById("votingTitle").textContent +=
+  " " + votepostTitle;
+document.getElementById("votingEndDate").textContent +=
+  " " + votepostEndDate;
+document.getElementById("votingDescription").textContent +=
+  " " + votepostDescription;
+
 let resultsBtn = document.getElementById("results");
 resultsBtn.addEventListener("click", results);
 
