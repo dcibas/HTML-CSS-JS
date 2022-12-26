@@ -127,3 +127,56 @@ function vote(e) {
     .then(alert("Congratulations! You have successfully submited your vote!"))
     .then(location.reload());
 }
+
+let deleteBtn = document.getElementById("delete");
+deleteBtn.addEventListener("click", deletion);
+
+function deletion(e) {
+  e.preventDefault();
+  
+  let votePostId = localStorage.getItem("votepostid");
+
+  fetch(`http://localhost:8090/api/votepost/${votePostId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ` + localStorage.getItem("token")
+    },
+  })
+  .then((res) => res.json())
+  .then(alert("You have successfully deleted your vote!"))
+  .then(location.reload());
+}
+
+let editBtn = document.getElementById("edit");
+editBtn.addEventListener("click", edit);
+
+function edit(e) {
+  e.preventDefault();
+
+  let votePostId = localStorage.getItem("votepostid");
+  let myTitle = document.getElementById("votingtitle").value;
+  let myDescription = document.getElementById("votingdescription").value;
+  let myDate = document.getElementById("postdate").value;
+  let myEnddate = document.getElementById("enddate").value;
+  localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
+
+  fetch(`http://localhost:8090/api/votepost/${votePostId}`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ` + localStorage.getItem("token")
+    },
+    body: JSON.stringify({
+      id: votePostId,
+      votingTitle: myTitle,
+      votingDescription: myDescription,
+      date: myDate,
+      endDate: myEnddate,
+      userId: localStorage.getItem("userid"),
+    }),
+  })
+  .then((res) => res.json())
+  .then(alert("You have successfully edited your vote!"))
+  .then(location.reload());
+}
