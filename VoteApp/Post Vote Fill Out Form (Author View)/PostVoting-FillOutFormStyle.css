@@ -20,9 +20,9 @@
   .form-container {
     margin: 30% auto;
     display: block;
-    width:600px;
+    width: 600px;
     height: 680px;
-    text-align:center;
+    text-align: center;
     border: 1px solid black;
     border-radius: 10px;
     background-color: rgb(81, 255, 0);
@@ -40,7 +40,7 @@
   }
   
   .form-container input {
-    margin-bottom:10px;
+    margin-bottom: 10px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;
     height: 25px;
@@ -53,7 +53,7 @@
   }
 
   #votingdescription {
-    margin-bottom:20px;
+    margin-bottom: 20px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;
     /* height: 250px; */
@@ -69,7 +69,6 @@
     margin-bottom: 80px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
-    margin-bottom: 80px;
     background-color: white;
     border: 1px solid black;
     color: black;

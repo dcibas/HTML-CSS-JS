@@ -27,12 +27,14 @@ let subBtn = document.getElementById("submit");
 subBtn.addEventListener("click", submit);
 
 function submit(e) {
+  
   e.preventDefault();
   let myTitle = document.getElementById("votingtitle").value;
   let myDescription = document.getElementById("votingdescription").value;
   let myDate = document.getElementById("postdate").value;
   let myEnddate = document.getElementById("enddate").value;
   localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
+  
   fetch(`http://localhost:8090/api/votepost`, {
     method: "POST",
     headers: {

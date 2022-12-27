@@ -144,6 +144,8 @@ function deletion(e) {
     },
   })
   .then((res) => res.json())
+  .then(localStorage.removeItem("votepostid"))
+  .then(localStorage.removeItem("votepost"))
   .then(alert("You have successfully deleted your vote!"))
   .then(location.reload());
 }
