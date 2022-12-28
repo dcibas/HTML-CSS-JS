@@ -24,6 +24,15 @@
     margin-left: 67px;
   }
 
+  .vpoints1, .vpoints2, .vpoints3, .vpoints4 {
+    text-align: left;
+    color: black;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-left: 67px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
   .form-container {
     margin: 30% auto;
     display: block;
@@ -149,8 +158,9 @@
     cursor: pointer;
   }
 
-  .editFormHeader{
+  .editFormHeader {
     margin-top: 40px;
+    margin-bottom: 60px;
     margin-left: 57px;
   }
 

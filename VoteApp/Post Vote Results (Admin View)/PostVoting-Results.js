@@ -1,3 +1,27 @@
+let results = window.localStorage.getItem("results");
+let resultsObj = JSON.parse(results);
+let votepost = window.localStorage.getItem("votepost");
+let votepostObj = JSON.parse(votepost);
+let resultsTitle = JSON.parse(results).myTitle;
+let resultsVotingChoice1Points = JSON.parse(results).myvotingChoice1Points;
+let resultsVotingChoice2Points = JSON.parse(results).myvotingChoice2Points;
+let resultsVotingChoice3Points = JSON.parse(results).myvotingChoice3Points;
+let resultsVotingChoice4Points = JSON.parse(results).myvotingChoice4Points;
+let votepostEndDate = JSON.parse(votepost).myEnddate;
+
+document.getElementById("resultsTitle").textContent +=
+  " " + resultsTitle;
+document.getElementById("votingEndDate").textContent +=
+  " " + votepostEndDate;
+document.getElementById("votingchoice1Points").textContent +=
+  " " + resultsVotingChoice1Points;
+document.getElementById("votingchoice2Points").textContent +=
+  " " + resultsVotingChoice2Points;
+document.getElementById("votingchoice3Points").textContent +=
+  " " + resultsVotingChoice3Points;
+document.getElementById("votingchoice4Points").textContent +=
+  " " + resultsVotingChoice4Points;
+
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);
 
@@ -41,9 +65,9 @@ deleteBtn.addEventListener("click", deletion);
 function deletion(e) {
   e.preventDefault();
   
-  let votePostId = localStorage.getItem("resultsid");
+  let myresultsId = localStorage.getItem("resultsid");
 
-  fetch(`http://localhost:8090/api/results/${votePostId}`, {
+  fetch(`http://localhost:8090/api/results/${myresultsId}`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
@@ -67,8 +91,7 @@ function edit(e) {
   let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
   let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
   let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
-  let myEnddate = document.getElementById("enddate").value;
-  localStorage.setItem("votepost", JSON.stringify({ myresultsId, myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points, myEnddate }));
+  localStorage.setItem("votepost", JSON.stringify({ myresultsId, myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
 
   fetch(`http://localhost:8090/api/results/${myresultsId}`, {
     method: "PUT",
@@ -83,7 +106,6 @@ function edit(e) {
       votingPoints2: myvotingChoice2Points,
       votingPoints3: myvotingChoice3Points,
       votingPoints4: myvotingChoice4Points,
-      endDate: myEnddate,
       userId: localStorage.getItem("userid"),
     }),
   })
@@ -103,8 +125,7 @@ function submit(e) {
   let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
   let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
   let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
-  let myEnddate = document.getElementById("enddate").value;
-  localStorage.setItem("results", JSON.stringify({ myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points, myEnddate }));
+  localStorage.setItem("results", JSON.stringify({ myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
 
   fetch(`http://localhost:8090/api/results`, {
     method: "POST",
@@ -118,7 +139,6 @@ function submit(e) {
       votingPoints2: myvotingChoice2Points,
       votingPoints3: myvotingChoice3Points,
       votingPoints4: myvotingChoice4Points,
-      endDate: myEnddate,
       userId: localStorage.getItem("userid"),
     }),
   })
