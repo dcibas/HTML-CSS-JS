@@ -1,26 +1,56 @@
-let results = window.localStorage.getItem("results");
-let resultsObj = JSON.parse(results);
-let votepost = window.localStorage.getItem("votepost");
-let votepostObj = JSON.parse(votepost);
-let resultsTitle = JSON.parse(results).myTitle;
-let resultsVotingChoice1Points = JSON.parse(results).myvotingChoice1Points;
-let resultsVotingChoice2Points = JSON.parse(results).myvotingChoice2Points;
-let resultsVotingChoice3Points = JSON.parse(results).myvotingChoice3Points;
-let resultsVotingChoice4Points = JSON.parse(results).myvotingChoice4Points;
-let votepostEndDate = JSON.parse(votepost).myEnddate;
+let myresultsId = localStorage.getItem("resultsid");
 
-document.getElementById("resultsTitle").textContent +=
-  " " + resultsTitle;
-document.getElementById("votingEndDate").textContent +=
-  " " + votepostEndDate;
-document.getElementById("votingchoice1Points").textContent +=
-  " " + resultsVotingChoice1Points;
-document.getElementById("votingchoice2Points").textContent +=
-  " " + resultsVotingChoice2Points;
-document.getElementById("votingchoice3Points").textContent +=
-  " " + resultsVotingChoice3Points;
-document.getElementById("votingchoice4Points").textContent +=
-  " " + resultsVotingChoice4Points;
+fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
+  headers: {
+    "Content-type": "application/json",
+    "Authorization": `Bearer ` + localStorage.getItem("token")
+  },})
+    .then((res) => res.json())
+    .then((data) => {
+        document.getElementById(
+          "votingchoicePoints"
+        ).innerHTML += `<br> Completely Against:
+      ${data.votingPoints1} <br><br> Partially Against: ${data.votingPoints2} 
+      <br><br> Partially Agree: ${data.votingPoints3} 
+      <br><br> Completely Agree: ${data.votingPoints4}
+      <br><br><br>
+      `;
+      
+    });
+
+    let votepost = window.localStorage.getItem("votepost");
+    let votepostObj = JSON.parse(votepost);
+    let resultsTitle = JSON.parse(votepost).myTitle;
+    let votepostEndDate = JSON.parse(votepost).myEnddate;
+
+    document.getElementById("resultsTitle").textContent +=
+      " " + resultsTitle;
+    document.getElementById("votingEndDate").textContent +=
+      " " + votepostEndDate;
+
+// let results = window.localStorage.getItem("results");
+// let resultsObj = JSON.parse(results);
+// let votepost = window.localStorage.getItem("votepost");
+// let votepostObj = JSON.parse(votepost);
+// let resultsTitle = JSON.parse(results).myTitle;
+// let resultsVotingChoice1Points = JSON.parse(results).myvotingChoice1Points;
+// let resultsVotingChoice2Points = JSON.parse(results).myvotingChoice2Points;
+// let resultsVotingChoice3Points = JSON.parse(results).myvotingChoice3Points;
+// let resultsVotingChoice4Points = JSON.parse(results).myvotingChoice4Points;
+// let votepostEndDate = JSON.parse(votepost).myEnddate;
+
+// document.getElementById("resultsTitle").textContent +=
+//   " " + resultsTitle;
+// document.getElementById("votingEndDate").textContent +=
+//   " " + votepostEndDate;
+// document.getElementById("votingchoice1Points").textContent +=
+//   " " + resultsVotingChoice1Points;
+// document.getElementById("votingchoice2Points").textContent +=
+//   " " + resultsVotingChoice2Points;
+// document.getElementById("votingchoice3Points").textContent +=
+//   " " + resultsVotingChoice3Points;
+// document.getElementById("votingchoice4Points").textContent +=
+//   " " + resultsVotingChoice4Points;
 
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);
@@ -86,12 +116,11 @@ function edit(e) {
   e.preventDefault();
 
   let myresultsId = localStorage.getItem("resultsid");
-  let myTitle = document.getElementById("votingtitle").value;
   let myvotingChoice1Points = document.getElementById("votingchoice1Points").value;
   let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
   let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
   let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
-  localStorage.setItem("votepost", JSON.stringify({ myresultsId, myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
+  localStorage.setItem("results", JSON.stringify({ myresultsId, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
 
   fetch(`http://localhost:8090/api/results/${myresultsId}`, {
     method: "PUT",
@@ -101,12 +130,10 @@ function edit(e) {
     },
     body: JSON.stringify({
       id: myresultsId,
-      votingTitle: myTitle,
       votingPoints1: myvotingChoice1Points,
       votingPoints2: myvotingChoice2Points,
       votingPoints3: myvotingChoice3Points,
       votingPoints4: myvotingChoice4Points,
-      userId: localStorage.getItem("userid"),
     }),
   })
   .then((res) => res.json())
@@ -120,12 +147,13 @@ subBtn.addEventListener("click", submit);
 function submit(e) {
   e.preventDefault();
 
-  let myTitle = document.getElementById("votingtitle").value;
-  let myvotingChoice1Points = document.getElementById("votingchoice1Points").value;
-  let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
-  let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
-  let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
-  localStorage.setItem("results", JSON.stringify({ myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
+  // let myvotepostId = document.getElementById("votepostid").value;
+  // let myTitle = document.getElementById("votingtitle").value;
+  // let myvotingChoice1Points = document.getElementById("votingchoice1Points").value;
+  // let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
+  // let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
+  // let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
+  // localStorage.setItem("results", JSON.stringify({ myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
 
   fetch(`http://localhost:8090/api/results`, {
     method: "POST",
@@ -134,11 +162,7 @@ function submit(e) {
       "Authorization": `Bearer ` + localStorage.getItem("token")
     },
     body: JSON.stringify({
-      votingTitle: myTitle,
-      votingPoints1: myvotingChoice1Points,
-      votingPoints2: myvotingChoice2Points,
-      votingPoints3: myvotingChoice3Points,
-      votingPoints4: myvotingChoice4Points,
+      id: localStorage.getItem("votepostid"),
       userId: localStorage.getItem("userid"),
     }),
   })
