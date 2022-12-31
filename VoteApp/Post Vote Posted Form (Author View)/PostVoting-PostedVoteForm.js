@@ -36,7 +36,13 @@ resultsBtn.addEventListener("click", results);
 
 function results(e) {
 e.preventDefault();
-window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Results%20(User%20View)/PostVoting-Results.html";
+
+if (localStorage.getItem("userid") == 3) {
+  window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Results%20(Admin%20View)/PostVoting-Results.html";
+} else {
+  window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Results%20(User%20View)/PostVoting-Results.html";
+}
+
 }
 
 let backBtn = document.getElementById("back");
