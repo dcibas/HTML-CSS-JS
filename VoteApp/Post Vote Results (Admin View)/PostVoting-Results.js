@@ -14,8 +14,7 @@ fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
       <br><br> Partially Agree: ${data.votingPoints3} 
       <br><br> Completely Agree: ${data.votingPoints4}
       <br><br><br>
-      `;
-      
+      `; 
     });
 
     let votepost = window.localStorage.getItem("votepost");
@@ -137,7 +136,7 @@ function edit(e) {
     }),
   })
   .then((res) => res.json())
-  .then(alert("You have successfully edited your vote!"))
+  .then(alert("You have successfully edited your result!"))
   .then(location.reload());
 }
 
@@ -167,7 +166,16 @@ function submit(e) {
     }),
   })
   .then((res) => res.json())
-  .then((data) => localStorage.setItem("resultsid", data.id))
-  .then(alert("You have successfully edited your vote!"))
-  .then(location.reload());
+  .then((data) => {
+      if(localStorage.getItem("resultsid") == data.id){
+        alert("A vote post already exists!");
+        } else {
+      // localStorage.setItem("resultsid", data.id);
+      alert("You have successfully posted a result!");
+      location.reload();
+        }
+      });
+  // .then((data) => localStorage.setItem("resultsid", data.id))
+  // .then(alert("You have successfully posted a result!"))
+  // .then(location.reload());
 }

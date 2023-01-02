@@ -116,7 +116,15 @@ function vote(e) {
   // let myVotinchoice = document.querySelector('input');
   // let myVotinchoice = document.getElementsByName("votingchoice").value;
   // let myVotinchoice = document.querySelectorAll('input[type=button]');
- 
+  
+  // let today = new Date();
+  // let dateTime =
+  //   today.getFullYear() +
+  //   "-" +
+  //   (today.getMonth() + 1) +
+  //   "-" +
+  //   today.getDate();
+
   fetch(`http://localhost:8090/api/votepost/vote`, {
     method: "POST",
     headers: {
@@ -130,6 +138,14 @@ function vote(e) {
     }),
   })
     .then((res) => res.json())
+    //  .then((data) => {
+    //   if(dateTime > data.date){
+    //     alert("This vote post already exists!");
+    //   } else {
+    //   alert("Congratulations! You have successfully submited your vote!");
+    //   location.reload();  
+    //   }
+    // });
     .then(alert("Congratulations! You have successfully submited your vote!"))
     .then(location.reload());
 }
@@ -140,6 +156,18 @@ deleteBtn.addEventListener("click", deletion);
 function deletion(e) {
   e.preventDefault();
   
+  // let today = new Date();
+  // let dateTime =
+  //   today.getFullYear() +
+  //   "-" +
+  //   (today.getMonth() + 1) +
+  //   "-" +
+  //   today.getDate();
+
+  //  if(dateTime == myEnddate){
+
+  // } 
+
   let votePostId = localStorage.getItem("votepostid");
 
   fetch(`http://localhost:8090/api/votepost/${votePostId}`, {
