@@ -92,30 +92,6 @@
     transition: 0.4s; 
   }
 
-  /* .Votingchoice1:hover {
-    background-color:rgb(242, 255, 0);
-    cursor: pointer;
-    transition: 0.4s;
-  }
-
-  .Votingchoice2:hover {
-    background-color:rgb(242, 255, 0);
-    cursor: pointer;
-    transition: 0.4s;
-  }
-
-  .Votingchoice3:hover {
-    background-color:rgb(242, 255, 0);
-    cursor: pointer;
-    transition: 0.4s;
-  }
-
-  .Votingchoice4:hover {
-    background-color:rgb(242, 255, 0);
-    cursor: pointer;
-    transition: 0.4s;
-  } */
-
   .logout {
     margin-right: 4.6rem;
   }
@@ -208,4 +184,8 @@
     margin-top: 10px;
     margin-right: 75px;
     margin-left: 57px;
+  }
+
+  #archive {
+    margin-right: 4.5rem;
   }

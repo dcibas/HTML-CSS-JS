@@ -1,3 +1,27 @@
+// Fetch all active posts in progress
+
+// fetch(`localhost:8090/api/votepost/active`, {
+//   method: "POST",
+//   headers: {
+//     "Content-type": "application/json",
+//     "Authorization": `Bearer ` + localStorage.getItem("token")
+//   },})
+//     .then((res) => res.json())
+// .then((data) =>
+// data.forEach((element) => {
+  // document.getElementById(
+  //   "form-containers"
+  // ).innerHTML += ;
+  // let header = document.createElement("h1");
+//   let mySection = document.createElement("section");
+//   document.getElementById("div").append(mySection);
+// })
+// )
+
+// let div = document.querySelector("div");
+// let clone = div.cloneNode(true);
+// div.after(clone);
+
 let votepost = window.localStorage.getItem("votepost");
 let votepostObj = JSON.parse(votepost);
 let votepostTitle = JSON.parse(votepost).myTitle;
@@ -7,7 +31,7 @@ let votepostEndDate = JSON.parse(votepost).myEnddate;
 document.getElementById("votingTitle").textContent +=
   " " + votepostTitle;
 document.getElementById("votingEndDate").textContent +=
-  " " + votepostEndDate;
+  " Voting end date: " + votepostEndDate;
 document.getElementById("votingDescription").textContent +=
   " " + votepostDescription;
 
@@ -42,50 +66,6 @@ function logout(e) {
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }
 
-// let votingchoice1Btn = document.getElementById("votingchoice1")
-// votingchoice1Btn.addEventListener("click", votingchoice1);
-
-// function votingchoice1 (e) {
-// e.preventDefault();
-// document.getElementById("votingchoice1").style.background = 'rgb(242, 255, 0)';
-// document.getElementById("votingchoice2").style.background = 'white';
-// document.getElementById("votingchoice3").style.background = 'white';
-// document.getElementById("votingchoice4").style.background = 'white';
-// }
-
-// let votingchoice2Btn = document.getElementById("votingchoice2")
-// votingchoice2Btn.addEventListener("click", votingchoice2);
-
-// function votingchoice2 (e) {
-// e.preventDefault();
-// document.getElementById("votingchoice2").style.background = 'rgb(242, 255, 0)';
-// document.getElementById("votingchoice1").style.background = 'white';
-// document.getElementById("votingchoice3").style.background = 'white';
-// document.getElementById("votingchoice4").style.background = 'white';
-// }
-
-// let votingchoice3Btn = document.getElementById("votingchoice3")
-// votingchoice3Btn.addEventListener("click", votingchoice3);
-
-// function votingchoice3 (e) {
-// e.preventDefault();
-// document.getElementById("votingchoice3").style.background = 'rgb(242, 255, 0)';
-// document.getElementById("votingchoice4").style.background = 'white';
-// document.getElementById("votingchoice2").style.background = 'white';
-// document.getElementById("votingchoice1").style.background = 'white';
-// }
-
-// let votingchoice4Btn = document.getElementById("votingchoice4")
-// votingchoice4Btn.addEventListener("click", votingchoice4);
-
-// function votingchoice4 (e) {
-// e.preventDefault();
-// document.getElementById("votingchoice4").style.background = 'rgb(242, 255, 0)';
-// document.getElementById("votingchoice3").style.background = 'white';
-// document.getElementById("votingchoice2").style.background = 'white';
-// document.getElementById("votingchoice1").style.background = 'white';
-// }
-
 let voteBtn = document.getElementById("vote");
 voteBtn.addEventListener("click", vote);
 
@@ -93,9 +73,6 @@ function vote(e) {
   e.preventDefault();
 
   let myVotinchoice = document.getElementById("votingchoices").value;
-  // let myVotinchoice = document.querySelector('input');
-  // let myVotinchoice = document.getElementsByName("votingchoice").value;
-  // let myVotinchoice = document.querySelectorAll('input[type=button]');
  
   fetch(`http://localhost:8090/api/votepost/vote`, {
     method: "POST",
@@ -109,7 +86,17 @@ function vote(e) {
       userId: localStorage.getItem("userid"),
     }),
   })
-    .then((res) => res.json())
-    .then(alert("Congratulations! You have successfully submited your vote!"))
-    .then(location.reload());
+  .then((res) => {
+    if(res.ok){
+    alert("Congratulations! You have successfully submited your vote!");
+    location.reload(); 
+    } else {
+    alert("You have already voted!");
+    }
+    return res;
+  })
+  .then((res) => res.json())
+  .catch((error) => alert(error));
+  // .then(alert("Congratulations! You have successfully submited your vote!"))
+  // .then(location.reload());
 }

@@ -29,41 +29,6 @@ fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
     document.getElementById("votingEndDate").textContent +=
       " " + votepostEndDate;
 
-// fetch(`http://localhost:8090/api/results`, {method: "GET",
-//   headers: {
-//     "Content-type": "application/json",
-//     "Authorization": `Bearer ` + localStorage.getItem("token")
-//   },})
-//     .then((res) => res.json())
-//     .then((data) => {
-//       document.getElementById("votingchoice1Points").innerHTML = "";
-//       for (let i = 0; i < data.length; i++) {
-//         document.getElementById(
-//           "votingchoice1Points"
-//         ).innerHTML += `<br> Results id: ${data[i].id} <br> Voting Choice 1 Points:
-//       ${data[i].votingPoints1} <br> Voting Choice 2 Points: ${data[i].votingPoints2} 
-//       <br> Voting Choice 3 Points: ${data[i].votingPoints3} 
-//       <br> Voting Choice 4 Points: ${data[i].votingPoints4}
-//       <br><br><br>
-//       `;
-//       }
-//     });
-
-// let results = window.localStorage.getItem("results");
-// let resultsObj = JSON.parse(results);
-// let resultsTitle = JSON.parse(results).myTitle;
-// let resultsVotingChoice1Points = JSON.parse(results).myvotingChoice1Points;
-// let resultsVotingChoice2Points = JSON.parse(results).myvotingChoice2Points;
-// let resultsVotingChoice3Points = JSON.parse(results).myvotingChoice3Points;
-// let resultsVotingChoice4Points = JSON.parse(results).myvotingChoice4Points;
-// document.getElementById("votingchoice1Points").textContent +=
-//   " " + resultsVotingChoice1Points;
-// document.getElementById("votingchoice2Points").textContent +=
-//   " " + resultsVotingChoice2Points;
-// document.getElementById("votingchoice3Points").textContent +=
-//   " " + resultsVotingChoice3Points;
-// document.getElementById("votingchoice4Points").textContent +=
-//   " " + resultsVotingChoice4Points;
 
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);

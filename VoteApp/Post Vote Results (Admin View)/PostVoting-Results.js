@@ -27,30 +27,6 @@ fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
     document.getElementById("votingEndDate").textContent +=
       " " + votepostEndDate;
 
-// let results = window.localStorage.getItem("results");
-// let resultsObj = JSON.parse(results);
-// let votepost = window.localStorage.getItem("votepost");
-// let votepostObj = JSON.parse(votepost);
-// let resultsTitle = JSON.parse(results).myTitle;
-// let resultsVotingChoice1Points = JSON.parse(results).myvotingChoice1Points;
-// let resultsVotingChoice2Points = JSON.parse(results).myvotingChoice2Points;
-// let resultsVotingChoice3Points = JSON.parse(results).myvotingChoice3Points;
-// let resultsVotingChoice4Points = JSON.parse(results).myvotingChoice4Points;
-// let votepostEndDate = JSON.parse(votepost).myEnddate;
-
-// document.getElementById("resultsTitle").textContent +=
-//   " " + resultsTitle;
-// document.getElementById("votingEndDate").textContent +=
-//   " " + votepostEndDate;
-// document.getElementById("votingchoice1Points").textContent +=
-//   " " + resultsVotingChoice1Points;
-// document.getElementById("votingchoice2Points").textContent +=
-//   " " + resultsVotingChoice2Points;
-// document.getElementById("votingchoice3Points").textContent +=
-//   " " + resultsVotingChoice3Points;
-// document.getElementById("votingchoice4Points").textContent +=
-//   " " + resultsVotingChoice4Points;
-
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);
 
@@ -104,6 +80,7 @@ function deletion(e) {
     },
   })
   .then((res) => res.json())
+  .then(localStorage.removeItem("resultsid"))
   .then(alert("You have successfully deleted your vote!"))
   .then(location.reload());
 }
@@ -145,15 +122,7 @@ subBtn.addEventListener("click", submit);
 
 function submit(e) {
   e.preventDefault();
-
-  // let myvotepostId = document.getElementById("votepostid").value;
-  // let myTitle = document.getElementById("votingtitle").value;
-  // let myvotingChoice1Points = document.getElementById("votingchoice1Points").value;
-  // let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
-  // let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
-  // let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
-  // localStorage.setItem("results", JSON.stringify({ myTitle, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
-
+  
   fetch(`http://localhost:8090/api/results`, {
     method: "POST",
     headers: {
@@ -165,17 +134,20 @@ function submit(e) {
       userId: localStorage.getItem("userid"),
     }),
   })
+  .then((res) => {
+    if(res.ok){
+    localStorage.setItem("resultsid", data.id);
+    alert("Congratulations! You have successfully submited your result!");
+    location.reload(); 
+    } else {
+    alert("You have already posted a result!");
+    }
+    return res;
+  })
   .then((res) => res.json())
-  .then((data) => {
-      if(localStorage.getItem("resultsid") == data.id){
-        alert("A vote post already exists!");
-        } else {
-      // localStorage.setItem("resultsid", data.id);
-      alert("You have successfully posted a result!");
-      location.reload();
-        }
-      });
-  // .then((data) => localStorage.setItem("resultsid", data.id))
-  // .then(alert("You have successfully posted a result!"))
-  // .then(location.reload());
+  .catch((error) => alert(error));
 }
+//   .then((data) => localStorage.setItem("resultsid", data.id))
+//   .then(alert("You have successfully posted a result!"))
+//   .then(location.reload());
+// }

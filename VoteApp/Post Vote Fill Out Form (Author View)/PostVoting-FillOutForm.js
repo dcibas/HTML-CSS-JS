@@ -56,7 +56,7 @@ function submit(e) {
   let myDate = document.getElementById("postdate").value;
   let myEnddate = document.getElementById("enddate").value;
   // localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
-  
+
   fetch(`http://localhost:8090/api/votepost`, {
     method: "POST",
     headers: {
@@ -71,18 +71,21 @@ function submit(e) {
       userId: localStorage.getItem("userid"),
     }),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      if(localStorage.getItem("votepostid") != null){
-        alert("A vote post already exists!");
-        } else {
-        localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
-        localStorage.setItem("votepostid", data.id);
-        alert("You have successfully submited a Vote Post!")
-        window.location.href =
-        "http://127.0.0.1:5500/Post%20Vote%20Posted%20Form%20(Author%20View)/PostVoting-PostedVoteForm.html";
-        }
-      });
+  .then((res) => {
+    if(res.ok){
+    localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
+    localStorage.setItem("votepostid", data.id);
+    alert("Congratulations! You have successfully submited a vote post!");
+    window.location.href =
+     "http://127.0.0.1:5500/Post%20Vote%20Posted%20Form%20(Author%20View)/PostVoting-PostedVoteForm.html";
+    location.reload(); 
+    } else {
+    alert("A vote post already exists!");
+    }
+    return res;
+  })
+  .then((res) => res.json())
+  .catch((error) => alert(error));
     // .then((data) => localStorage.setItem("votepostid", data.id))
     // .then(alert("You have successfully submited a Vote Post!"))
     // .then(
