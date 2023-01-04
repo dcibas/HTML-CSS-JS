@@ -29,6 +29,22 @@ fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
     document.getElementById("votingEndDate").textContent +=
       " " + votepostEndDate;
 
+// let today = new Date();
+// let dateTime =
+//   today.getFullYear() +
+//     "-" +
+//   (today.getMonth() + 1) +
+//     "-" +
+//   today.getDate() +
+//     " " +
+//   today.getHours() +
+//     ":" +
+//   today.getMinutes();
+
+// if(dateTime >= votepostEndDate) {
+// .then(localStorage.removeItem("resultsid"))
+// .then(localStorage.removeItem("results"))
+// } 
 
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);
@@ -44,6 +60,9 @@ logoutBtn.addEventListener("click", logout);
 
 function logout(e) {
   e.preventDefault();
+  // .then(localStorage.removeItem("user"))
+  // .then(localStorage.removeItem("userid"))
+  // .then(localStorage.removeItem("token"))
   alert("You have successfully logged out!");
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }

@@ -3,6 +3,9 @@ logoutBtn.addEventListener("click", logout);
 
 function logout(e) {
   e.preventDefault();
+  // .then(localStorage.removeItem("user"))
+  // .then(localStorage.removeItem("userid"))
+  // .then(localStorage.removeItem("token"))
   alert("You have successfully logged out!");
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }

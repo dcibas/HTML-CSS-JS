@@ -27,11 +27,29 @@ fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
     document.getElementById("votingEndDate").textContent +=
       " " + votepostEndDate;
 
+// let today = new Date();
+// let dateTime =
+//   today.getFullYear() +
+//     "-" +
+//   (today.getMonth() + 1) +
+//     "-" +
+//   today.getDate() +
+//     " " +
+//   today.getHours() +
+//     ":" +
+//   today.getMinutes();
+
+// if(dateTime >= votepostEndDate) {
+// .then(localStorage.removeItem("resultsid"))
+// .then(localStorage.removeItem("results"))
+// }      
+
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);
 
 function back(e){
 e.preventDefault();
+// history.back();
 window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html";
 }
 
@@ -40,6 +58,9 @@ logoutBtn.addEventListener("click", logout);
 
 function logout(e) {
   e.preventDefault();
+  // .then(localStorage.removeItem("user"))
+  // .then(localStorage.removeItem("userid"))
+  // .then(localStorage.removeItem("token"))
   alert("You have successfully logged out!");
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }
@@ -91,7 +112,8 @@ editBtn.addEventListener("click", edit);
 function edit(e) {
   e.preventDefault();
 
-  let myresultsId = localStorage.getItem("resultsid");
+  // let myresultsId = localStorage.getItem("resultsid");
+  let myresultsId = document.getElementById("resultId").value;
   let myvotingChoice1Points = document.getElementById("votingchoice1Points").value;
   let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
   let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
@@ -113,6 +135,7 @@ function edit(e) {
     }),
   })
   .then((res) => res.json())
+  .then((data) => localStorage.setItem("resultsid", data.id))
   .then(alert("You have successfully edited your result!"))
   .then(location.reload());
 }
@@ -122,7 +145,13 @@ subBtn.addEventListener("click", submit);
 
 function submit(e) {
   e.preventDefault();
-  
+   
+  let myresultsId = document.getElementById("resultId").value;
+  let myvotingChoice1Points = document.getElementById("votingchoice1Points").value;
+  let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
+  let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
+  let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
+
   fetch(`http://localhost:8090/api/results`, {
     method: "POST",
     headers: {
@@ -136,7 +165,8 @@ function submit(e) {
   })
   .then((res) => {
     if(res.ok){
-    localStorage.setItem("resultsid", data.id);
+    localStorage.setItem("results", JSON.stringify({ myresultsId, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
+    localStorage.setItem("resultsid", myresultsId);
     alert("Congratulations! You have successfully submited your result!");
     location.reload(); 
     } else {
@@ -145,6 +175,7 @@ function submit(e) {
     return res;
   })
   .then((res) => res.json())
+  // .then((data) => localStorage.setItem("resultsid", data.id))
   .catch((error) => alert(error));
 }
 //   .then((data) => localStorage.setItem("resultsid", data.id))

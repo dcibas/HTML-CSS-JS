@@ -11,6 +11,23 @@ document.getElementById("votingEndDate").textContent +=
 document.getElementById("votingDescription").textContent +=
   " " + votepostDescription;
 
+// let today = new Date();
+// let dateTime =
+//   today.getFullYear() +
+//     "-" +
+//   (today.getMonth() + 1) +
+//     "-" +
+//   today.getDate() +
+//     " " +
+//   today.getHours() +
+//     ":" +
+//   today.getMinutes();
+
+// if(dateTime >= votepostEndDate) {
+// .then(localStorage.removeItem("votepostid"))
+// .then(localStorage.removeItem("votepost"))
+// }  
+
 let modalBtns = [...document.querySelectorAll(".button")];
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
@@ -50,14 +67,26 @@ backBtn.addEventListener("click", back);
 
 function back(e){
 e.preventDefault();
+// history.back();
 window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html";
 }
+
+let archiveBtn = document.getElementById("archive");
+archiveBtn.addEventListener("click", archive);
+
+function archive(e) {
+  e.preventDefault();
+  window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Posted%20Form%20(Voter%20View%20Archive)/PostVoting-Archive.html";
+  }
 
 let logoutBtn = document.getElementById("logout");
 logoutBtn.addEventListener("click", logout);
 
 function logout(e) {
   e.preventDefault();
+  // .then(localStorage.removeItem("user"))
+  // .then(localStorage.removeItem("userid"))
+  // .then(localStorage.removeItem("token"))
   alert("You have successfully logged out!");
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }

@@ -1,6 +1,4 @@
-// Fetch all active posts in progress
-
-fetch(`http://localhost:8090/api/votepost/active`, {
+fetch(`http://localhost:8090/api/votepost/archive`, {
   method: "POST",
   headers: {
     "Content-type": "application/json",
@@ -19,20 +17,10 @@ fetch(`http://localhost:8090/api/votepost/active`, {
           <br>
           <p class="votingdescription" id="votingDescription">${data[i].votingDescription}</p>
           <br />
-          <p class="votingCh">Choose a voting choice:</p>
-          <br>
-          <select name="vote" id="votingchoices">
-            <option value="Completely_Against">Completely Against</option>
-            <option value="Partially_Against">Partially Against</option>
-            <option value="Partially_Agree">Partially Agree</option>
-            <option value="Completely_Agree">Completely Agree</option>
-          </select>
           
           <button type="button" class="logout" id="logout" onclick="logout(event)">Log Out</button>
           <button type="button" id="back" onclick="back(event)">Back</button>
           <button type="button" id="results" onclick="results(event)">Results</button>
-          <button type="button" class="vote" id="vote" onclick="vote(event)">Vote</button>
-          <button type="button" class="archive" id="archive">Archive</button>
         </section>
       </div><br><br><br><br><br><br><br><br><br><br>`
     }
@@ -80,14 +68,6 @@ if (localStorage.getItem("userid") == 3) {
   window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Results%20(User%20View)/PostVoting-Results.html";
 }
 
-}
-
-let archiveBtn = document.getElementById("archive");
-archiveBtn.addEventListener("click", archive);
-
-function archive(e) {
-e.preventDefault();
-window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Posted%20Form%20(Voter%20View%20Archive)/PostVoting-Archive.html";
 }
 
 let backBtn = document.getElementById("back");
