@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <div class="form-container">
+    <div class="form-container" id="maindiv">
         <h1>Post Vote</h1>
         <section>
         <h2 id="votingTitle"></h2>
@@ -21,6 +21,7 @@
           <p class="votingCh">Choose a voting choice:</p>
           <br>
           <select name="vote" id="votingchoices">
+            <option disabled selected value> -- select an option -- </option>
             <option value="Completely_Against">Completely Against</option>
             <option value="Partially_Against">Partially Against</option>
             <option value="Partially_Agree">Partially Agree</option>

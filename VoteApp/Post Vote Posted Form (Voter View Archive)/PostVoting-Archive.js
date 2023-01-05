@@ -25,6 +25,8 @@ fetch(`http://localhost:8090/api/votepost/archive`, {
       </div><br><br><br><br><br><br><br><br><br><br>`
     }
   });
+  
+document.getElementById("maindiv").style.display = "none";  
 
 let votepost = window.localStorage.getItem("votepost");
 let votepostObj = JSON.parse(votepost);

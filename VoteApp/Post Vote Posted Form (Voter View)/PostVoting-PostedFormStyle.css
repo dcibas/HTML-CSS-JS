@@ -62,7 +62,7 @@
     color: white;
   }
   
-  .form-container input, #votingchoices {
+  .form-container input, #votingchoices, #votingchoice {
     margin-bottom: 10px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;

@@ -1,5 +1,3 @@
-// Fetch all active posts in progress
-
 fetch(`http://localhost:8090/api/votepost/active`, {
   method: "POST",
   headers: {
@@ -15,13 +13,14 @@ fetch(`http://localhost:8090/api/votepost/active`, {
   `<h1>Post Vote</h1>
         <section>
         <h2 id="votingTitle">${data[i].votingTitle}</h2>
-          <p class="votingenddate" id="votingEndDate">${data[i].endDate}</p>
+          <p class="votingenddate" id="votingEndDate">Voting end-date: ${data[i].endDate}</p>
           <br>
           <p class="votingdescription" id="votingDescription">${data[i].votingDescription}</p>
           <br />
           <p class="votingCh">Choose a voting choice:</p>
           <br>
-          <select name="vote" id="votingchoices">
+          <select name="vote" id="votingchoice" onchange="votewithid(event, ${data[i].id}, this.value)">
+            <option disabled selected value> -- select an option -- </option>
             <option value="Completely_Against">Completely Against</option>
             <option value="Partially_Against">Partially Against</option>
             <option value="Partially_Agree">Partially Agree</option>
@@ -31,12 +30,13 @@ fetch(`http://localhost:8090/api/votepost/active`, {
           <button type="button" class="logout" id="logout" onclick="logout(event)">Log Out</button>
           <button type="button" id="back" onclick="back(event)">Back</button>
           <button type="button" id="results" onclick="results(event)">Results</button>
-          <button type="button" class="vote" id="vote" onclick="vote(event)">Vote</button>
-          <button type="button" class="archive" id="archive">Archive</button>
+          <button type="button" class="archive" id="archive" onclick="archive(event)">Archive</button>
         </section>
       </div><br><br><br><br><br><br><br><br><br><br>`
     }
   });
+
+document.getElementById("maindiv").style.display = "none";
 
 let votepost = window.localStorage.getItem("votepost");
 let votepostObj = JSON.parse(votepost);
@@ -128,6 +128,38 @@ function vote(e) {
     body: JSON.stringify({
       votingChoice: myVotinchoice,
       votePostId: localStorage.getItem("votepostid"),
+      userId: localStorage.getItem("userid"),
+    }),
+  })
+  .then((res) => {
+    if(res.ok){
+    alert("Congratulations! You have successfully submited your vote!");
+    location.reload(); 
+    } else {
+    alert("You have already voted!");
+    }
+    return res;
+  })
+  .then((res) => res.json())
+  .catch((error) => alert(error));
+  // .then(alert("Congratulations! You have successfully submited your vote!"))
+  // .then(location.reload());
+}
+
+function votewithid(e, id, value){
+  e.preventDefault();
+
+  // let myVotingchoice = document.getElementById("votingchoice").value;
+ 
+  fetch(`http://localhost:8090/api/votepost/vote`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ` + localStorage.getItem("token")
+    },
+    body: JSON.stringify({
+      votingChoice: value,
+      votePostId: id,
       userId: localStorage.getItem("userid"),
     }),
   })
