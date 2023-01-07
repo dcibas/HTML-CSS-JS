@@ -17,7 +17,6 @@ fetch(`http://localhost:8090/api/votepost/archive`, {
           <br>
           <p class="votingdescription" id="votingDescription">${data[i].votingDescription}</p>
           <br />
-          
           <button type="button" class="logout" id="logout" onclick="logout(event)">Log Out</button>
           <button type="button" id="back" onclick="back(event)">Back</button>
           <button type="button" id="results" onclick="results(event)">Results</button>
@@ -43,23 +42,6 @@ document.getElementById("votingDescription").textContent +=
 
 let resultsBtn = document.getElementById("results");
 resultsBtn.addEventListener("click", results);
-
-// let today = new Date();
-// let dateTime =
-//   today.getFullYear() +
-//     "-" +
-//   (today.getMonth() + 1) +
-//     "-" +
-//   today.getDate() +
-//     " " +
-//   today.getHours() +
-//     ":" +
-//   today.getMinutes();
-
-// if(dateTime >= votepostEndDate) {
-// .then(localStorage.removeItem("votepostid"))
-// .then(localStorage.removeItem("votepost"))
-// }
 
 function results(e) {
 e.preventDefault();
@@ -124,6 +106,4 @@ function vote(e) {
   })
   .then((res) => res.json())
   .catch((error) => alert(error));
-  // .then(alert("Congratulations! You have successfully submited your vote!"))
-  // .then(location.reload());
 }

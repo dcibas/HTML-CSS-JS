@@ -39,6 +39,22 @@
     overflow: hidden;
   }
   
+  #div {
+    margin: 30% auto;
+    display: block;
+    width: 600px;
+    height: 680px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(81, 255, 0);
+    padding-top: 2rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-anchor: none;
+    overflow: auto;
+  }
+
   body {
     margin: 0 auto;
     font-family: Arial;
@@ -46,7 +62,7 @@
     color: white;
   }
   
-  .form-container input, select {
+  .form-container input, select, #votingchoices, #votingchoice {
     margin-bottom: 10px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 15px;

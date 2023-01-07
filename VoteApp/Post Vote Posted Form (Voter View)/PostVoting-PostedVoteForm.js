@@ -54,23 +54,6 @@ document.getElementById("votingDescription").textContent +=
 let resultsBtn = document.getElementById("results");
 resultsBtn.addEventListener("click", results);
 
-// let today = new Date();
-// let dateTime =
-//   today.getFullYear() +
-//     "-" +
-//   (today.getMonth() + 1) +
-//     "-" +
-//   today.getDate() +
-//     " " +
-//   today.getHours() +
-//     ":" +
-//   today.getMinutes();
-
-// if(dateTime >= votepostEndDate) {
-// .then(localStorage.removeItem("votepostid"))
-// .then(localStorage.removeItem("votepost"))
-// }
-
 function results(e) {
 e.preventDefault();
 
@@ -142,14 +125,10 @@ function vote(e) {
   })
   .then((res) => res.json())
   .catch((error) => alert(error));
-  // .then(alert("Congratulations! You have successfully submited your vote!"))
-  // .then(location.reload());
 }
 
 function votewithid(e, id, value){
   e.preventDefault();
-
-  // let myVotingchoice = document.getElementById("votingchoice").value;
  
   fetch(`http://localhost:8090/api/votepost/vote`, {
     method: "POST",
@@ -174,6 +153,4 @@ function votewithid(e, id, value){
   })
   .then((res) => res.json())
   .catch((error) => alert(error));
-  // .then(alert("Congratulations! You have successfully submited your vote!"))
-  // .then(location.reload());
 }

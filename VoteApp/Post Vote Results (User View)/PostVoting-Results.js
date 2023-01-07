@@ -1,4 +1,3 @@
-
 let myresultsId = localStorage.getItem("resultsid");
 
 fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
@@ -28,23 +27,6 @@ fetch(`http://localhost:8090/api/results/${myresultsId}`, {method: "GET",
       " " + resultsTitle;
     document.getElementById("votingEndDate").textContent +=
       " " + votepostEndDate;
-
-// let today = new Date();
-// let dateTime =
-//   today.getFullYear() +
-//     "-" +
-//   (today.getMonth() + 1) +
-//     "-" +
-//   today.getDate() +
-//     " " +
-//   today.getHours() +
-//     ":" +
-//   today.getMinutes();
-
-// if(dateTime >= votepostEndDate) {
-// .then(localStorage.removeItem("resultsid"))
-// .then(localStorage.removeItem("results"))
-// } 
 
 let backBtn = document.getElementById("back");
 backBtn.addEventListener("click", back);
