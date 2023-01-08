@@ -32,8 +32,8 @@ backBtn.addEventListener("click", back);
 
 function back(e){
 e.preventDefault();
-// history.back();
-window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html";
+history.back();
+// window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html";
 }
 
 let logoutBtn = document.getElementById("logout");
@@ -83,10 +83,22 @@ function deletion(e) {
       "Authorization": `Bearer ` + localStorage.getItem("token")
     },
   })
-  .then((res) => res.json())
-  .then(localStorage.removeItem("resultsid"))
-  .then(alert("You have successfully deleted your vote!"))
-  .then(location.reload());
+.then((res) => {
+if(res.ok){
+localStorage.removeItem("resultsid")
+alert("You have successfully deleted your vote post, votes and results!");
+location.reload(); 
+} else {
+alert("Something went wrong!");
+}
+return res;
+})
+.then((res) => res.json())
+.catch((error) => alert(error));
+  // .then((res) => res.json())
+  // .then(localStorage.removeItem("resultsid"))
+  // .then(alert("You have successfully deleted your vote!"))
+  // .then(location.reload());
 }
 
 let editBtn = document.getElementById("edit");
@@ -100,7 +112,7 @@ function edit(e) {
   let myvotingChoice2Points = document.getElementById("votingchoice2Points").value;
   let myvotingChoice3Points = document.getElementById("votingchoice3Points").value;
   let myvotingChoice4Points = document.getElementById("votingchoice4Points").value;
-  localStorage.setItem("results", JSON.stringify({ myresultsId, myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
+  localStorage.setItem("results", JSON.stringify({ myvotingChoice1Points, myvotingChoice2Points, myvotingChoice3Points, myvotingChoice4Points }));
 
   fetch(`http://localhost:8090/api/results/${myresultsId}`, {
     method: "PUT",
@@ -116,10 +128,17 @@ function edit(e) {
       votingPoints4: myvotingChoice4Points,
     }),
   })
+  .then((res) => {
+    if(res.ok){   
+   alert("You have successfully edited your result!");
+   location.reload(); 
+   } else {
+   alert("Something went wrong!");
+   }
+   return res;
+  })
   .then((res) => res.json())
-  .then((data) => localStorage.setItem("resultsid", data.id))
-  .then(alert("You have successfully edited your result!"))
-  .then(location.reload());
+  .catch((error) => alert(error));
 }
 
 let subBtn = document.getElementById("submit");
