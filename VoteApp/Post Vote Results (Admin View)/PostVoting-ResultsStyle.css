@@ -134,10 +134,6 @@
     margin-right: 5px;
   }
 
-  #edit {
-    margin-right: 50px
-  }
-
   button:hover {
     background-color: rgb(242, 255, 0);
     cursor: pointer;
@@ -174,4 +170,8 @@
   .editInput {
     margin-right: 6px;
     margin-left: -10px;
+  }
+
+  #editid {
+    margin-right: 3.4rem;
   }

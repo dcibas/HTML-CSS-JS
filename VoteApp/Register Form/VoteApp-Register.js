@@ -42,29 +42,6 @@ function savedata(e) {
   let myaddress = document.getElementById("address").value;
   let myage = document.getElementById("age").value
 
-  if (
-    myname != null &&
-    mysurname != null &&
-    myname.length > 0 &&
-    mysurname.length > 0 &&
-    mypassword != null &&
-    myrepeatedpassword != null &&
-    myemail != null &&
-    mypassword.length > 0 &&
-    mypassword != "" &&
-    myrepeatedpassword.length > 0 &&
-    myrepeatedpassword != "" &&
-    myrepeatedpassword === mypassword &&
-    myemail.length > 0 &&
-    myemail != "" &&
-    myaddress != null &&
-    myaddress.length != null &&
-    myaddress != "" &&
-    myage != null &&
-    myage.length != null && 
-    myage != "" &&
-    myage >= 18
-  ) {
           fetch("http://localhost:8090/api/auth/signups", {
             method: "POST",
             headers: {
@@ -80,20 +57,20 @@ function savedata(e) {
               age: myage
             }),
           })
-            .then((res) => res.json())
-            .then((data) => localStorage.setItem("userid", data.id))
-            .then(
-              localStorage.setItem(
-                "user",
-                JSON.stringify({ myname, mysurname, mypassword, myemail, myrepeatedpassword, myaddress, myage })
-              )
-            )
-            .then(alert("You have successfully registered!"))
-            .then(
-              (window.location.href =
-                "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html")
-            ); 
-        } else {
-          alert("Please enter full info and try again!");
-        }
-      }
+          .then((res) => {
+            if(res.ok){   
+           alert("You have successfully registered!");
+           window.location.href =
+                "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html"; 
+           } else {
+           alert("Please enter valid info!");
+           }
+           return res;
+          })
+          .then((res) => res.json())
+          .catch((error) => alert(error))
+          .then((data) => { if(data.id != undefined){
+            localStorage.setItem("userid", data.id);
+          }}
+      )}
+      

@@ -45,7 +45,6 @@ function login(e) {
       res.json()
     .then((data) =>  {
         if (token != null && token != "") {
-          localStorage.setItem("user", JSON.stringify({ myemail, mypassword })); 
           localStorage.setItem("userid", data.id);
           alert("Login successful!");
           window.location = "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html";

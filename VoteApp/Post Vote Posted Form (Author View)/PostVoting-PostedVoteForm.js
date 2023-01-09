@@ -89,7 +89,6 @@ backBtn.addEventListener("click", back);
 function back(e){
 e.preventDefault();
 history.back();
-// window.location.href = "http://127.0.0.1:5500/Post%20Vote%20Fill%20Out%20Form%20(Author%20View)/PostVoting-FillOutForm.html";
 }
 
 let archiveBtn = document.getElementById("archive");
@@ -105,9 +104,6 @@ logoutBtn.addEventListener("click", logout);
 
 function logout(e) {
   e.preventDefault();
-  // .then(localStorage.removeItem("user"))
-  // .then(localStorage.removeItem("userid"))
-  // .then(localStorage.removeItem("token"))
   alert("You have successfully logged out!");
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }
@@ -173,40 +169,6 @@ function votewithid(e, id, value) {
   .catch((error) => alert(error));
 }
 
-// let deleteBtn = document.getElementById("delete");
-// deleteBtn.addEventListener("click", deletion);
-
-// function deletion(e) {
-//   e.preventDefault();
-
-//   let votePostId = localStorage.getItem("votepostid");
-
-//   fetch(`http://localhost:8090/api/votepost/${votePostId}`, {
-//     method: "DELETE",
-//     headers: {
-//       "Content-type": "application/json",
-//       "Authorization": `Bearer ` + localStorage.getItem("token")
-//     },
-//   })
-//   .then((res) => {
-//     if(res.ok){
-//     localStorage.removeItem("votepostid")
-//     localStorage.removeItem("votepost")
-//     alert("You have successfully deleted your vote!");
-//     location.reload(); 
-//     } else {
-//     alert("You have already voted!");
-//     }
-//     return res;
-//   })
-//   .then((res) => res.json())
-//   .catch((error) => alert(error));
-//   .then(localStorage.removeItem("votepostid"))
-//   .then(localStorage.removeItem("votepost"))
-//   .then(alert("You have successfully deleted your vote!"))
-//   .then(location.reload());
-// }
-
 let editBtn = document.getElementById("edit");
 editBtn.addEventListener("click", edit);
 
@@ -216,9 +178,9 @@ function edit(e) {
   let votePostId = localStorage.getItem("votepostid");
   let myTitle = document.getElementById("votingtitle").value;
   let myDescription = document.getElementById("votingdescription").value;
-  let myDate = document.getElementById("postdate").value;
+  // let myDate = document.getElementById("postdate").value;
   let myEnddate = document.getElementById("enddate").value;
-  localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
+  localStorage.setItem("votepost", JSON.stringify({ myTitle, myEnddate, myDescription }));
 
   fetch(`http://localhost:8090/api/votepost/${votePostId}`, {
     method: "PUT",
@@ -230,7 +192,6 @@ function edit(e) {
       id: votePostId,
       votingTitle: myTitle,
       votingDescription: myDescription,
-      date: myDate,
       endDate: myEnddate,
       userId: localStorage.getItem("userid"),
     }),

@@ -24,8 +24,10 @@
               <div class="edit-form">
                 <form>
                   <a class="close">&times;</a>
-                  <h2 class="editFormHeader">Edit or Post a Result</h2>
+                  <h2 class="editFormHeader">Edit or Post a Result<br><br> Edit Vote Post Id</h2>
                   <div class="editInput">
+                    <input type="number" name="id" id="editvotepostId" min="1" placeholder="Vote Post Id">
+                    <br>
                     <input type="number" name="votingChoice1Points" id="votingchoice1Points" min="0" placeholder="Voting Choice 1 Points" required>
                     <br>
                     <input type="number" name="votingChoice2Points" id="votingchoice2Points" min="0" placeholder="Voting Choice 2 Points" required>
@@ -35,6 +37,7 @@
                     <input type="number" name="votingChoice4Points" id="votingchoice4Points" min="0" placeholder="Voting Choice 4 Points" required>
                     <br>
                   </div>
+                  <button type="button" id="editid">Edit Id</button>
                   <button type="button" id="edit">Edit</button>
                   <button type="button" id="submit">Submit</button>
                   <br>

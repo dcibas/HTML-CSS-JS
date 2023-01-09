@@ -3,9 +3,6 @@ logoutBtn.addEventListener("click", logout);
 
 function logout(e) {
   e.preventDefault();
-  // .then(localStorage.removeItem("user"))
-  // .then(localStorage.removeItem("userid"))
-  // .then(localStorage.removeItem("token"))
   alert("You have successfully logged out!");
   window.location.href = "http://127.0.0.1:5500/Login%20Form/VoteApp-Login.html";
 }
@@ -56,7 +53,6 @@ function submit(e) {
   e.preventDefault();
   let myTitle = document.getElementById("votingtitle").value;
   let myDescription = document.getElementById("votingdescription").value;
-  let myDate = document.getElementById("postdate").value;
   let myEnddate = document.getElementById("enddate").value;
 
   fetch(`http://localhost:8090/api/votepost`, {
@@ -67,7 +63,6 @@ function submit(e) {
     },
     body: JSON.stringify({
       votingTitle: myTitle,
-      date: myDate,
       endDate: myEnddate,
       votingDescription: myDescription,
       userId: localStorage.getItem("userid"),
@@ -75,14 +70,14 @@ function submit(e) {
   })
   .then((res) => {
     if(res.ok){
-    localStorage.setItem("votepost", JSON.stringify({ myTitle, myDate, myEnddate, myDescription }));
+    localStorage.setItem("votepost", JSON.stringify({ myTitle, myEnddate, myDescription }));
     alert("Congratulations! You have successfully submited a vote post!");
     window.location.href =
      "http://127.0.0.1:5500/Post%20Vote%20Posted%20Form%20(Author%20View)/PostVoting-PostedVoteForm.html";
     location.reload(); 
     } 
     else {
-    alert("A vote post already exists!");
+    alert("A vote post already exists or you need to fully complete the form!");
     }
     return res;
   })
