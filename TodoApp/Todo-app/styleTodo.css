@@ -1,15 +1,15 @@
-*{
+* {
   border: 0px solid transparent;
   align-content: center;
 }
 
-body{
+body {
   /* margin: 40px 100px 100px 118px; */
   margin: 40px 100px 100px 0px;
   background-color: white;
 }
 
-#container, #list{
+#container, #list {
   display: none;
   border: 1px solid black;
   border-radius: 0.8rem;
@@ -21,7 +21,7 @@ body{
   background-color: white;
 }
 
-.form{
+.form {
   display: inline-block;
   border: 1px solid black;
   margin: 4rem;
@@ -33,7 +33,7 @@ body{
   border-radius: 0.8rem;
 }
 
-.addBtn, .closeBtn, .logoutBtn, .editBtn, .submitBtn, .deleteBtn, .reloadBtn{
+.addBtn, .closeBtn, .logoutBtn, .editBtn, .submitBtn, .deleteBtn, .reloadBtn {
   margin-top: 2rem;
   margin-bottom: 1.5rem;
   border-radius: 8px;
@@ -45,11 +45,11 @@ body{
   cursor: pointer;
 }
 
-.logoutBtn{
+.logoutBtn {
   float: right;
 }
 
-#content{
+#content {
   display: inline-block;
   width: 265px;
   height: 26px;
@@ -58,7 +58,7 @@ body{
   border-radius: 4px;
 }
 
-#type, #date{
+#type, #date {
   display: inline-block;
   height: 26px;
   margin-right: 1rem;
@@ -66,7 +66,7 @@ body{
   border-radius: 4px;
 }
 
-#id, #usrid{
+#id, #usrid {
   display: inline-block;
   height: 26px;
   width: 50px;
@@ -75,12 +75,12 @@ body{
   border-radius: 4px;
 }
 
-p{
+p {
   font-size: 18px;
   font-weight: bold;
 }
 
-.para1, .para2, .para3, .para4{
+.para1, .para2, .para3, .para4 {
   display: inline-block;
   margin-right: 0.6rem;
 }
@@ -88,7 +88,7 @@ p{
 /* @media only screen and (max-width: 1400px) and (min-width: 300px) {
 
   #form,
-  #container, #list, #content{
-    width:100%;
+  #container, #list, #content {
+    width: 100%;
   }
 } */

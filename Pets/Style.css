@@ -1,4 +1,4 @@
-body, html{
+body, html {
  background-image: linear-gradient(to left, #6472BB, #8E71C5);
  display: flex;
  align-items: center;
@@ -10,7 +10,7 @@ body, html{
  box-sizing: border-box;
 }
 
-.container1{
+.container1 {
  border: 2px solid transparent;
  border-radius: 0.3rem;
  width: 250px;
@@ -18,7 +18,7 @@ body, html{
  background-image: linear-gradient(to left, #968ECE, #9E8DCE);
 }
 
-.container2{
+.container2 {
  border: 2px solid transparent;
  border-radius: 0.3rem;
  width: 250px;
@@ -27,7 +27,7 @@ body, html{
  background-image: linear-gradient(to right, #908ECC, #898FCA);
 }
 
-.container3{
+.container3 {
  border: 2px solid transparent;
  border-radius: 0.3rem;
  width: 250px;
@@ -36,7 +36,7 @@ body, html{
  background-image: linear-gradient(to right, #7C90C9, #838FCA);
 }
 
-.reallyBtn{
+.reallyBtn {
  background-color: #FEFF0F;
  border-radius: 0.4rem;
  border-color: transparent;
@@ -47,24 +47,23 @@ body, html{
  font-weight: 600;
 }
 
-p{
+p {
  margin: 2.5rem 1.8rem 0rem 2rem;
  text-align: center;
  font-family: Arial, Helvetica, sans-serif;
  word-wrap: break-word;
 }
 
-h1{
+h1 {
  text-align: center;
- 
 }
 
-hr{
+hr {
   width: 220px;
   border: 0.1px solid rgb(139, 138, 138);
 }
 
-.catH{
+.catH {
  margin-top: 2rem;
  font-family:Arial, Helvetica, sans-serif;
  text-transform: uppercase;
@@ -72,7 +71,7 @@ hr{
  text-shadow: 2px 2px 4px #52496c;
 }
 
-.freeH{
+.freeH {
  margin-top: 1rem;
  font-size: 60px;
  font-weight: 540;

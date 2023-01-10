@@ -1,9 +1,9 @@
 * {
   border: 0px solid transparent;
-  position:relative;
+  position: relative;
 }
 
-body{
+body {
   /* margin: 90px 100px 100px 500px; */
   margin: 90px 100px 100px 410px;
   background-color: white;
@@ -20,7 +20,7 @@ body{
   background-color: white;
 }
 
-.regBtn, .backBtn{
+.regBtn, .backBtn {
   margin-top: 2rem;
   margin-bottom: 2.5rem;
   margin-left: 0.7rem;
@@ -33,12 +33,12 @@ body{
   cursor: pointer;
 }
 
-h1{
+h1 {
   margin-bottom: 3rem;
   margin-left: 0.7rem;
 }
 
-.Password, .RepeatPassword, .Email{
+.Password, .RepeatPassword, .Email {
   margin-bottom: 1rem;
   margin-left: 0.7rem;
   border: 1px solid rgb(152, 151, 151);

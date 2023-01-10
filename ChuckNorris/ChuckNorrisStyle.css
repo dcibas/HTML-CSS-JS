@@ -1,4 +1,4 @@
- body{
+ body {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
  }
@@ -12,11 +12,11 @@
   border-radius: 5px;
  }
  
- span{
+ span {
   margin-left: 1rem;
  }
 
- .photo{
+ .photo {
   width: 50px;
   height: 50px;
   object-fit: contain;
